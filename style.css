@@ -27,7 +27,9 @@ body {
     padding: 10px;
 
     flex-basis: 337px;
+    flex-grow: 0;
     flex-wrap: wrap;
+    overflow: hidden;
 
 }
 .display {
@@ -36,7 +38,15 @@ body {
     background-color: lightblue;
 
     flex-basis: 315px;
+    flex-grow: 0;
     height: 75px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 50px;
+    overflow: hidden;
 }
 .container .equals {
     flex-basis: 155px;
