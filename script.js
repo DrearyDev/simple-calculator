@@ -19,6 +19,8 @@ let answer = null;
 let lastOperator = null;
 let currentOperator = '+';
 
+let maxDisplayLength = 9;
+
 
 numbers.forEach(number => {
     number.addEventListener('click', (e) => {
@@ -48,22 +50,27 @@ percent.addEventListener('click', () => {
 negativeToggle.addEventListener('click', () => {
 
     if (displayValue !== null) {
-        let conversion = displayValue * -1;
+        let conversion = displayValue;
         displayValue = null;
-        handleDisplay(conversion);
+
+        if (conversion[0] === '-'){
+            conversion = conversion.substring(1);
+            handleDisplay(conversion);
+        } else {
+            conversion = '-' + conversion;
+            handleDisplay(conversion);
+        };
     };
 
 });
 
 function handleDisplay(number){
 
-
-
     if (displayValue === null){
         operators.forEach(operator => operator.classList.remove('toggle'));
         display.textContent = number;
         displayValue = display.textContent;
-    } else if (displayValue.toString().length < 9) {
+    } else if (displayValue.toString().length < maxDisplayLength) {
         display.textContent += number;
         displayValue = display.textContent;
     };
@@ -106,7 +113,6 @@ clear.addEventListener('click', (e) => {
     currentOperator = '+';
     decimal.classList.remove('toggle');
     operators.forEach(operator => operator.classList.remove('toggle'));
-
 });
 
 equals.addEventListener('click', () => {
@@ -139,19 +145,35 @@ function operate(num1, operator, num2){
 };
 
 function add(num1, num2){
+    if ((num1 * num2).toString().length > maxDisplayLength){
+        return (num1 * num2).toPrecision(4);
+    };
+
     return (num1 + num2);
 };
 
 function subtract(num1, num2){
+    if ((num1 * num2).toString().length > maxDisplayLength){
+        return (num1 * num2).toPrecision(4);
+    };
+
     return (num1 - num2);
 };
 
 function multiply(num1, num2){
+    if ((num1 * num2).toString().length > maxDisplayLength){
+        return (num1 * num2).toPrecision(4);
+    };
+    
     return (num1 * num2);
 };
 
 function divide(num1, num2){
     if (num2 === 0) return 'lmao';
+
+    if ((num1 * num2).toString().length > maxDisplayLength){
+        return (num1 * num2).toPrecision(4);
+    };
 
     return (num1 / num2);
 };

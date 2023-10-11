@@ -40,7 +40,7 @@ body {
     flex-basis: 315px;
     flex-grow: 0;
     height: 75px;
-    padding: 0 5px;
+    padding: 0 2px;
 
     display: flex;
     align-items: center;
