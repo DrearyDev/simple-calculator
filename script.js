@@ -118,6 +118,7 @@ equals.addEventListener('click', () => {
     answer = operate(firstNum, currentOperator, secondNum);
     firstNum = null;
     decimal.classList.remove('toggle');
+    currentOperator = '+';
 
     displayValue = null;
     handleDisplay(answer);
