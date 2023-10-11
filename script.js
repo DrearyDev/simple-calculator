@@ -57,6 +57,10 @@ negativeToggle.addEventListener('click', () => {
 
 function handleDisplay(number){
 
+    operators.forEach(operator => {
+        operator.classList.remove('toggle');
+    });
+
     if (displayValue === null){
         display.textContent = number;
         displayValue = display.textContent;
@@ -89,7 +93,7 @@ operators.forEach(operator => {
             lastOperator = currentOperator;
         };
 
-        console.log(firstNum, currentOperator, secondNum, '=', answer );
+        operator.classList.add('toggle');
 
     });
 });
@@ -102,6 +106,11 @@ clear.addEventListener('click', (e) => {
     answer = null;
     currentOperator = '+';
     decimal.classList.remove('toggle');
+
+    operators.forEach(operator => {
+        operator.classList.remove('toggle');
+    });
+
 });
 
 equals.addEventListener('click', () => {
