@@ -48,6 +48,9 @@ body {
     font-size: 50px;
     overflow: hidden;
 }
+.container .equals {
+    flex-basis: 155px;
+}
 .btn {
     border-radius: 10px;
     border: 1px solid black;
