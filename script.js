@@ -7,6 +7,7 @@ const clear = document.querySelector('.clear');
 const equals = document.querySelector('.equals');
 const decimal = document.querySelector('.decimal');
 const percent = document.querySelector('.percent');
+const negativeToggle = document.querySelector('.negative');
 
 display.textContent = 0;
 let displayValue = null;
@@ -34,14 +35,24 @@ decimal.addEventListener('click', (e) => {
 
 });
 
-percent.addEventListener('click', (e) => {
+percent.addEventListener('click', () => {
 
     if (displayValue !== null){
         let conversion = displayValue / 100;
         displayValue = null;
         handleDisplay(conversion);
     };
-    
+
+});
+
+negativeToggle.addEventListener('click', () => {
+
+    if (displayValue !== null) {
+        let conversion = displayValue * -1;
+        displayValue = null;
+        handleDisplay(conversion);
+    };
+
 });
 
 function handleDisplay(number){
