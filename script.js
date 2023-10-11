@@ -14,7 +14,7 @@ let secondNum = 0;
 let answer = null;
 
 let lastOperator = null;
-let currentOperator = null;
+let currentOperator = '+';
 
 
 
@@ -68,7 +68,7 @@ clear.addEventListener('click', (e) => {
     firstNum = null;
     secondNum =  null;
     answer = null;
-    currentOperator = null;
+    currentOperator = '+';
 });
 
 equals.addEventListener('click', () => {
