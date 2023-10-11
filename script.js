@@ -6,6 +6,7 @@ const operators = document.querySelectorAll('.operator');
 const clear = document.querySelector('.clear');
 const equals = document.querySelector('.equals');
 const decimal = document.querySelector('.decimal');
+const percent = document.querySelector('.percent');
 
 display.textContent = 0;
 let displayValue = null;
@@ -31,6 +32,16 @@ decimal.addEventListener('click', (e) => {
         handleDisplay(e.target.textContent);
     };
 
+});
+
+percent.addEventListener('click', (e) => {
+
+    if (displayValue !== null){
+        let conversion = displayValue / 100;
+        displayValue = null;
+        handleDisplay(conversion);
+    };
+    
 });
 
 function handleDisplay(number){
