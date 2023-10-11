@@ -63,7 +63,7 @@ function handleDisplay(number){
         operators.forEach(operator => operator.classList.remove('toggle'));
         display.textContent = number;
         displayValue = display.textContent;
-    } else {
+    } else if (displayValue.toString().length < 9) {
         display.textContent += number;
         displayValue = display.textContent;
     };
