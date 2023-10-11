@@ -57,11 +57,10 @@ negativeToggle.addEventListener('click', () => {
 
 function handleDisplay(number){
 
-    operators.forEach(operator => {
-        operator.classList.remove('toggle');
-    });
+
 
     if (displayValue === null){
+        operators.forEach(operator => operator.classList.remove('toggle'));
         display.textContent = number;
         displayValue = display.textContent;
     } else {
@@ -106,10 +105,7 @@ clear.addEventListener('click', (e) => {
     answer = null;
     currentOperator = '+';
     decimal.classList.remove('toggle');
-
-    operators.forEach(operator => {
-        operator.classList.remove('toggle');
-    });
+    operators.forEach(operator => operator.classList.remove('toggle'));
 
 });
 
