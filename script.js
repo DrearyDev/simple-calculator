@@ -5,6 +5,7 @@ const display = document.querySelector('.display');
 const operators = document.querySelectorAll('.operator');
 const clear = document.querySelector('.clear');
 const equals = document.querySelector('.equals');
+const decimal = document.querySelector('.decimal');
 
 display.textContent = 0;
 let displayValue = null;
@@ -17,11 +18,19 @@ let lastOperator = null;
 let currentOperator = '+';
 
 
-
 numbers.forEach(number => {
     number.addEventListener('click', (e) => {
         handleDisplay(e.target.textContent);
     });
+});
+
+decimal.addEventListener('click', (e) => {
+
+    if (!decimal.classList.contains('toggle')){
+        decimal.classList.add('toggle');
+        handleDisplay(e.target.textContent);
+    };
+
 });
 
 function handleDisplay(number){
@@ -40,6 +49,7 @@ operators.forEach(operator => {
     operator.addEventListener('click', (e) => {
 
         currentOperator = e.target.textContent;
+        decimal.classList.remove('toggle');
 
         if (firstNum === null) {
             firstNum = displayValue;
@@ -69,12 +79,15 @@ clear.addEventListener('click', (e) => {
     secondNum =  null;
     answer = null;
     currentOperator = '+';
+    decimal.classList.remove('toggle');
 });
 
 equals.addEventListener('click', () => {
     secondNum = displayValue;
     answer = operate(firstNum, currentOperator, secondNum);
     firstNum = null;
+    decimal.classList.remove('toggle');
+
     displayValue = null;
     handleDisplay(answer);
 });
@@ -98,19 +111,19 @@ function operate(num1, operator, num2){
 };
 
 function add(num1, num2){
-    return num1 + num2;
+    return (num1 + num2);
 };
 
 function subtract(num1, num2){
-    return num1 - num2;
+    return (num1 - num2);
 };
 
 function multiply(num1, num2){
-    return num1 * num2;
+    return (num1 * num2);
 };
 
 function divide(num1, num2){
     if (num2 === 0) return 'lmao';
 
-    return num1 / num2
+    return (num1 / num2);
 };

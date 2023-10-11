@@ -69,3 +69,13 @@ body {
 .btn:active {
     background-color: gray;
 }
+
+.toggle {
+    background-color: rgb(90, 153, 173);
+}
+.toggle:hover {
+    background-color: rgb(99, 169, 190);
+}
+.toggle:active {
+    background-color: rgb(71, 125, 141);
+}
