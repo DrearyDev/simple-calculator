@@ -10,8 +10,8 @@ const percent = document.querySelector('.percent');
 const negativeToggle = document.querySelector('.negative');
 const backspace = document.querySelector('.backspace');
 
-display.textContent = 0;
 display.style.fontSize = '50px';
+display.textContent = 0;
 let displayValue = null;
 
 let firstNum = null;
