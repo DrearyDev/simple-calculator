@@ -66,10 +66,13 @@ negativeToggle.addEventListener('click', () => {
 });
 
 backspace.addEventListener('click', () => {
-    let newDisplayValue = displayValue.substring(0, displayValue.length - 1);
-    displayValue = null;
-    handleDisplay(newDisplayValue);
+    if (displayValue !== null && displayValue.length > 1){
+        let newDisplayValue = displayValue.substring(0, displayValue.length - 1);
+        displayValue = null;
+        handleDisplay(newDisplayValue);
+    };
 });
+
 
 function handleDisplay(number){
 
