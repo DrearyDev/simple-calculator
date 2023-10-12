@@ -4,29 +4,46 @@
     box-sizing: border-box;
 }
 
+:root {
+    --BG-COLOR: #2b7c85;
+
+    --BODY-COLOR: #0c1446;
+    
+    --BORDER-COLORS: #111;
+
+    --DISPLAY-COLOR: #222;
+
+    --BTN-COLOR: hsl(165, 18%, 60%);
+    --BTN-HOVER-COLOR: hsl(165, 18%, 50%);
+    --BTN-ACTIVE-COLOR: hsl(165, 18%, 40%);
+    --BTN-TOGGLE-COLOR: hsl(232, 71%, 60%);
+    --BTN-TOGGLE-HOVER-COLOR: hsl(232, 71%, 50%);
+    --BTN-TOGGLE-ACTIVE-COLOR: hsl(232, 71%, 40%);
+}
+
 body {
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    background-color: lightskyblue;
+    background-color: var(--BG-COLOR);
 
     user-select: none;
 }
 
 .container {
     border-radius: 10px;
-    border: 1px solid black;
+    border: 5px solid var(--BORDER-COLORS);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: darkslategray;
+    background-color: var(--BODY-COLOR);
     gap: 5px;
     padding: 10px;
 
-    flex-basis: 337px;
+    flex-basis: 345px;
     flex-grow: 0;
     flex-wrap: wrap;
     overflow: hidden;
@@ -34,8 +51,9 @@ body {
 }
 .display {
     border-radius: 10px;
-    border: 1px solid black;
-    background-color: lightblue;
+    color: var(--DISPLAY-COLOR);
+    border: 2px solid var(--BORDER-COLORS);
+    background-color: var(--BTN-COLOR);
 
     flex-basis: 315px;
     flex-grow: 0;
@@ -56,9 +74,9 @@ body {
 }
 .btn {
     border-radius: 10px;
-    border: 1px solid black;
+    border: 2px solid var(--BORDER-COLORS);
     font-size: 20px;
-    background-color: lightblue;
+    background-color: var(--BTN-COLOR);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,18 +85,18 @@ body {
     height: 75px;
 }
 .btn:hover {
-    background-color: lightgray;
+    background-color: var(--BTN-HOVER-COLOR);
 }
 .btn:active {
-    background-color: gray;
+    background-color: var(--BTN-ACTIVE-COLOR);
 }
 
 .toggle {
-    background-color: rgb(90, 153, 173);
+    background-color: var(--BTN-TOGGLE-COLOR);
 }
 .toggle:hover {
-    background-color: rgb(99, 169, 190);
+    background-color: var(--BTN-TOGGLE-HOVER-COLOR);
 }
 .toggle:active {
-    background-color: rgb(71, 125, 141);
+    background-color: var(--BTN-TOGGLE-ACTIVE-COLOR);
 }
