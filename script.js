@@ -41,9 +41,9 @@ decimal.addEventListener('click', (e) => decimalPress(e));
 
 function percentPress(){
     if (displayValue !== null){
-        let conversion = displayValue / 100;
+        let conversion = displayValue;
         displayValue = null;
-        handleDisplay(conversion);
+        handleDisplay(operate(conversion, '/', 100));
     };
 };
 percent.addEventListener('click', percentPress);
@@ -161,16 +161,16 @@ function operate(num1, operator, num2){
 };
 
 function add(num1, num2){
-    if ((num1 * num2).toString().length > maxDisplayLength){
-        return (num1 * num2).toPrecision(4);
+    if ((num1 + num2).toString().length > maxDisplayLength){
+        return (num1 + num2).toPrecision(4);
     };
 
     return (num1 + num2);
 };
 
 function subtract(num1, num2){
-    if ((num1 * num2).toString().length > maxDisplayLength){
-        return (num1 * num2).toPrecision(4);
+    if ((num1 - num2).toString().length > maxDisplayLength){
+        return (num1 - num2).toPrecision(4);
     };
 
     return (num1 - num2);
@@ -187,8 +187,8 @@ function multiply(num1, num2){
 function divide(num1, num2){
     if (num2 === 0) return 'lmao';
 
-    if ((num1 * num2).toString().length > maxDisplayLength){
-        return (num1 * num2).toPrecision(4);
+    if ((num1 / num2).toString().length > maxDisplayLength){
+        return (num1 / num2).toPrecision(4);
     };
 
     return (num1 / num2);
