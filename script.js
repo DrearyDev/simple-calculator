@@ -124,6 +124,10 @@ equals.addEventListener('click', () => {
 
     displayValue = null;
     handleDisplay(answer);
+
+    if (answer === 0){
+        displayValue = null;
+    };
 });
 
 
