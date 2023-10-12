@@ -23,33 +23,33 @@ let currentOperator = '+';
 let maxDisplayLength = 9;
 
 
-numbers.forEach(number => {
-    number.addEventListener('click', (e) => {
-        handleDisplay(e.target.textContent);
-    });
-});
 
-decimal.addEventListener('click', (e) => {
+function numberPress(number){
+    handleDisplay(number);
+};
+numbers.forEach(number => number.addEventListener('click', (e) => numberPress(e.target.textContent)));
 
+
+function decimalPress(e){
     if (!decimal.classList.contains('toggle')){
         decimal.classList.add('toggle');
         handleDisplay(e.target.textContent);
     };
+};
+decimal.addEventListener('click', (e) => decimalPress(e));
 
-});
 
-percent.addEventListener('click', () => {
-
+function percentPress(){
     if (displayValue !== null){
         let conversion = displayValue / 100;
         displayValue = null;
         handleDisplay(conversion);
     };
+};
+percent.addEventListener('click', percentPress);
 
-});
 
-negativeToggle.addEventListener('click', () => {
-
+function negativeTogglePress(){
     if (displayValue !== null) {
         let conversion = displayValue;
         displayValue = null;
@@ -62,20 +62,21 @@ negativeToggle.addEventListener('click', () => {
             handleDisplay(conversion);
         };
     };
+};
+negativeToggle.addEventListener('click', negativeTogglePress);
 
-});
 
-backspace.addEventListener('click', () => {
+function backspacePress(){
     if (displayValue !== null && displayValue.length > 1){
         let newDisplayValue = displayValue.substring(0, displayValue.length - 1);
         displayValue = null;
         handleDisplay(newDisplayValue);
     };
-});
+};
+backspace.addEventListener('click', backspacePress);
 
 
 function handleDisplay(number){
-
     if (displayValue === null){
         operators.forEach(operator => operator.classList.remove('toggle'));
         display.textContent = number;
@@ -84,37 +85,35 @@ function handleDisplay(number){
         display.textContent += number;
         displayValue = display.textContent;
     };
-
 };
 
-operators.forEach(operator => {
-    operator.addEventListener('click', (e) => {
 
-        currentOperator = e.target.textContent;
-        decimal.classList.remove('toggle');
+function operatorPress(e){
+    currentOperator = e.target.textContent;
+    decimal.classList.remove('toggle');
 
-        if (firstNum === null) {
-            firstNum = displayValue;
-            displayValue = null;
-            lastOperator = currentOperator;
-        } else {
-            secondNum = displayValue;
-            firstNum = operate(firstNum, lastOperator, secondNum);
-            secondNum = null;
+    if (firstNum === null) {
+        firstNum = displayValue;
+        displayValue = null;
+        lastOperator = currentOperator;
+    } else {
+        secondNum = displayValue;
+        firstNum = operate(firstNum, lastOperator, secondNum);
+        secondNum = null;
 
-            displayValue = null;
-            handleDisplay(firstNum);
-            displayValue = null;
+        displayValue = null;
+        handleDisplay(firstNum);
+        displayValue = null;
             
-            lastOperator = currentOperator;
-        };
+        lastOperator = currentOperator;
+    };
 
-        operator.classList.add('toggle');
+    e.target.classList.add('toggle');
+};
+operators.forEach(operator => operator.addEventListener('click', (e) => operatorPress(e)));
 
-    });
-});
 
-clear.addEventListener('click', (e) => {
+function clearPress(e){
     display.textContent = 0;
     displayValue = null;
     firstNum = null;
@@ -123,9 +122,11 @@ clear.addEventListener('click', (e) => {
     currentOperator = '+';
     decimal.classList.remove('toggle');
     operators.forEach(operator => operator.classList.remove('toggle'));
-});
+};
+clear.addEventListener('click', (e) => clearPress(e));
 
-equals.addEventListener('click', () => {
+
+function equalsPress(){
     secondNum = displayValue;
     answer = operate(firstNum, currentOperator, secondNum);
     firstNum = null;
@@ -138,7 +139,8 @@ equals.addEventListener('click', () => {
     if (answer === 0){
         displayValue = null;
     };
-});
+};
+equals.addEventListener('click', equalsPress);
 
 
 
