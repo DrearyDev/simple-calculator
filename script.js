@@ -11,6 +11,7 @@ const negativeToggle = document.querySelector('.negative');
 const backspace = document.querySelector('.backspace');
 
 display.textContent = 0;
+display.style.fontSize = '50px';
 let displayValue = null;
 
 let firstNum = null;
