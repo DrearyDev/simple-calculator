@@ -8,6 +8,7 @@ const equals = document.querySelector('.equals');
 const decimal = document.querySelector('.decimal');
 const percent = document.querySelector('.percent');
 const negativeToggle = document.querySelector('.negative');
+const backspace = document.querySelector('.backspace');
 
 display.textContent = 0;
 let displayValue = null;
@@ -62,6 +63,12 @@ negativeToggle.addEventListener('click', () => {
         };
     };
 
+});
+
+backspace.addEventListener('click', () => {
+    let newDisplayValue = displayValue.substring(0, displayValue.length - 1);
+    displayValue = null;
+    handleDisplay(newDisplayValue);
 });
 
 function handleDisplay(number){
