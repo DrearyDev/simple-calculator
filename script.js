@@ -23,6 +23,52 @@ let currentOperator = '+';
 let maxDisplayLength = 9;
 
 
+let keypresses = [];
+
+window.addEventListener('keydown', (e) => {
+    e.preventDefault();
+    if (keypresses.length === 0){
+        keypresses[0] = e.key;
+        if (isNaN(keypresses[0])){
+            switch (keypresses[0]) {
+                case 'Tab':
+                    negativeTogglePress();
+                    break;
+                case '%':
+                    percentPress();
+                    break;
+                case 'Backspace':
+                    backspacePress();
+                    break;
+                case 'Escape':
+                    clearPress();
+                    break;
+                case 'Enter':
+                    equalsPress();
+                    break;
+                case '.':
+                    decimalPress();
+                    break;
+                case '+':
+                    operatorPress(e.key);
+                    break;
+                case '-':
+                    operatorPress(e.key);
+                    break;
+                case '*':
+                    operatorPress(e.key);
+                    break;
+                case '/':
+                    operatorPress(e.key);
+                    break;
+            };
+        } else {
+            numberPress(e.key);
+        };
+    };
+});
+window.addEventListener('keyup', () => keypresses = []);
+
 
 function numberPress(number){
     handleDisplay(number);
@@ -30,13 +76,13 @@ function numberPress(number){
 numbers.forEach(number => number.addEventListener('click', (e) => numberPress(e.target.textContent)));
 
 
-function decimalPress(e){
+function decimalPress(){
     if (!decimal.classList.contains('toggle')){
         decimal.classList.add('toggle');
-        handleDisplay(e.target.textContent);
+        handleDisplay('.');
     };
 };
-decimal.addEventListener('click', (e) => decimalPress(e));
+decimal.addEventListener('click', decimalPress);
 
 
 function percentPress(){
@@ -88,14 +134,13 @@ function handleDisplay(number){
 };
 
 
-function operatorPress(e){
-    currentOperator = e.target.textContent;
+function operatorPress(operator){
+    currentOperator = operator;
     decimal.classList.remove('toggle');
 
     if (firstNum === null) {
         firstNum = displayValue;
         displayValue = null;
-        lastOperator = currentOperator;
     } else {
         secondNum = displayValue;
         firstNum = operate(firstNum, lastOperator, secondNum);
@@ -105,15 +150,21 @@ function operatorPress(e){
         handleDisplay(firstNum);
         displayValue = null;
             
-        lastOperator = currentOperator;
     };
+    lastOperator = currentOperator;
 
-    e.target.classList.add('toggle');
+    operators.forEach(operator => {
+        if (operator.textContent === currentOperator){
+            operator.classList.add('toggle');
+        };
+    });
 };
-operators.forEach(operator => operator.addEventListener('click', (e) => operatorPress(e)));
+operators.forEach(operator => {
+    operator.addEventListener('click', (e) => operatorPress(e.target.textContent));
+});
 
 
-function clearPress(e){
+function clearPress(){
     display.textContent = 0;
     displayValue = null;
     firstNum = null;
@@ -123,7 +174,7 @@ function clearPress(e){
     decimal.classList.remove('toggle');
     operators.forEach(operator => operator.classList.remove('toggle'));
 };
-clear.addEventListener('click', (e) => clearPress(e));
+clear.addEventListener('click', clearPress);
 
 
 function equalsPress(){
