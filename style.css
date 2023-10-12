@@ -48,8 +48,11 @@ body {
     font-size: 50px;
     overflow: hidden;
 }
-.container .equals {
+.container .backspace {
     flex-basis: 155px;
+}
+.container .equals {
+    flex-basis: 315px;
 }
 .btn {
     border-radius: 10px;
